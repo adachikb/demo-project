@@ -1,0 +1,21 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: springboot-app
+            client-secret: PtXplliBwdxuzJQexN2x7KEn8VwFTFOf
+            scope: openid,profile,email
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/myrealm
+server:
+  port: 8081 # 8081 などに変更
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.example.demo.controller: DEBUG
