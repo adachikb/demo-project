@@ -19,3 +19,10 @@ logging:
   level:
     org.springframework.web: DEBUG
     com.example.demo.controller: DEBUG
+    org.springframework.security: DEBUG
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true

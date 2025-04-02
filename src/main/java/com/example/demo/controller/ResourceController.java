@@ -31,7 +31,7 @@ public class ResourceController {
     private final ResourceService resourceService;
 
     // GETメソッド（リソース取得）
-    @GetMapping("/{resourceName}")
+    // @GetMapping("/{resourceName}")
     public ResponseEntity<Map<String, Object>> getResource(@PathVariable String resourceName,
         @AuthenticationPrincipal OidcUser principal) {
 

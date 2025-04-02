@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Contract Info API
+  description: API for retrieving contract information.
+  version: 1.0.0
+servers:
+  - url: "http://localhost:8081/api"
+paths:
+  /resource/contractinfo:
+    get:
+      summary: Get contract information
+      description: Get detailed contract information.
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractInfoResponse"
+        "404":
+          description: Not Found
+
+components:
+  schemas:
+    ContractInfoResponse:
+      type: object
+      properties:
+        AAE91:
+          type: object
+          properties:
+            AAE91001: { type: string, example: "0" }
+            AAE91002: { type: string, example: "1" }
+            AAE91003: { type: string, example: "1" }
+            AAE91004: { type: string, example: "1" }
+            AAE91009: { type: string, example: "1" }
+            AAE91010: { type: string, example: "1" }
+            AAE91011: { type: string, example: "1" }
+            AAE91012: { type: string, example: "1" }
+            AAE91013: { type: string, example: "1" }
+            AAE91014: { type: string, example: "1" }
+            AAE91015: { type: string, example: "1" }
+            AAE91016: { type: string, example: "1" }
+            AAE91020: { type: string, example: "1" }
+            AAE91036: { type: string, example: "0" }
+            AAE91040: { type: string, example: "0" }
+            AAE91041: { type: string, example: "1" }
+            AAE91056: { type: string, example: "そうさ　かくにん　さま" }
+            AAE91058: { type: string, example: "MS" }
+            AAE91062:
+              {
+                type: string,
+                format: uri,
+                example: "https://www.aioinissaydowa.co.jp/change/index.aspx?change_flg=0",
+              }
+            AAE91063:
+              {
+                type: string,
+                format: uri,
+                example: "https://www.aioinissaydowa.co.jp/personal/guide/deduction/reissue_guide.html",
+              }
+            AAE91064:
+              {
+                type: string,
+                format: uri,
+                example: "https://www.msa-life.co.jp/customer/change/14.html",
+              }
+            AAE91067:
+              {
+                type: string,
+                format: uri,
+                example: "https://www2.jalux.com/hoken/golfer/mis_renewal.html",
+              }
+            AAE91069:
+              {
+                type: string,
+                format: uri,
+                example: "https://stub/sow/MS/Jikorenraku/Test1.html",
+              }
+            AAE91070:
+              {
+                type: string,
+                format: uri,
+                example: "https://www.msa-life.co.jp/customer/change/14.html",
+              }
+            AAE91072: { type: string, example: "RELEASE_MS_2023" }
+            AAE91073: { type: string, example: "RELEASE_MS_2023" }
+            AAE91074: { type: string, example: "RELEASE_MS_2023" }
+            AAE91080: { type: integer, example: 0 }
+            AAE91083: { type: string, example: "1" }
+            kList:
+              type: array
+              items:
+                $ref: "#/components/schemas/KListItem"
+    KListItem:
+      type: object
+      properties:
+        AAE91008:
+          {
+            type: string,
+            example: '<td colspan="2" class="table-mask-caution"><span class="table-mask-caution-message">ご契約者名が変更されておりますので、ご照会いただけなくなりました。</span><span/><span/><p class="table-mask-caution-message2">改姓についてのお問合わせはこちら</p><div class="box_block"><h3>三井住友海上インターネットデスク</h3><p class="text_tel"><a href="tel:0120168321" title="TEL0120-168-321">0120-168-321</a><span>(無料)</span></p></div></td>',
+          }
+        AAE91022: { type: string, example: "自動車保険" }
+        AAE91024: { type: string, example: "C538718661" }
+        AAE91025: { type: string, example: "&nbsp～&nbsp" }
+        AAE91028: { type: string, example: "-" }
+        AAE91029: { type: string, example: "-" }
+        AAE91031: { type: string, example: "ご契約明細あり" }
+        AAE91037: { type: string, example: "1" }
+        AAE91043: { type: string, example: "0" }
+        AAE91044: { type: string, example: "0" }
+        AAE91045: { type: string, example: "1" }
+        AAE91046: { type: string, example: "0" }
+        AAE91047: { type: string, example: "0" }
+        AAE91048: { type: string, example: "0" }
+        AAE91049: { type: string, example: "0" }
+        AAE91050: { type: string, example: "1" }
+        AAE91057: { type: string, example: "AAH9J" }
+        AAE91059: { type: string, example: "2" }
+        AAE91061: { type: string, example: "AAH9J" }
+        KEY: { type: string }
+        kChildList:
+          type: array
+          items:
+            $ref: "#/components/schemas/KChildItem"
+    KChildItem:
+      type: object
+      properties:
+        AAE91024: { type: string, example: "C538718661" }
+        AAE91037: { type: string, example: "1" }
+        AAE91042: { type: string, example: "0000000001" }
+        AAE91057: { type: string, example: "AAH9J" }
+        KEY: { type: string, example: "Sonpo1" }
+        pdfSign: { type: string, example: "1" }

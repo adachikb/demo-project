@@ -1,28 +1,43 @@
+package com.example.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.SecurityFilterChain;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
+@EnableWebSecurity
+@Slf4j
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/public/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .oauth2Login(oauth2 -> oauth2
-                .defaultSuccessUrl("/home", true) // 認証成功後の遷移先
-                .failureUrl("/login?error") // 認証失敗時の遷移先
-            )
-            .logout(logout -> logout
-                .logoutSuccessUrl("/") // ログアウト後の遷移先
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-            );
-        return http.build();
+
+        log.info("Applying SecurityFilterChain settings...");
+
+        SecurityFilterChain filterChain = http
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+            .anyRequest().authenticated()
+        )
+        .oauth2Login(oauth2 -> oauth2
+            .defaultSuccessUrl("/home") // Keycloakのredirect_uriやSavedRequestがない場合にのみ /home へ
+            .failureUrl("/login?error")
+        )
+        .logout(logout -> logout
+            .logoutSuccessUrl("/")
+            .invalidateHttpSession(true)
+            .deleteCookies("JSESSIONID")
+        )
+        .build();
+
+        log.info("filterChain: " + filterChain.toString());
+
+        return filterChain;
+
     }
+
 }

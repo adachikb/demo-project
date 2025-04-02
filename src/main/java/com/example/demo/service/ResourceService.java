@@ -5,6 +5,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
+import com.example.openapi.model.ContractInfoResponse;
+import com.example.openapi.model.ContractInfoResponseAAE91;
+
 
 @Service
 public class ResourceService {
@@ -32,6 +35,18 @@ public class ResourceService {
     public Optional<Map<String, Object>> getResourceData(String resourceName) {
         return Optional.ofNullable(resourceStorage.get(resourceName));
     }
+
+    // 契約情報取得
+    public ContractInfoResponse getContractInfo() {
+        // DBや外部APIから契約情報を取得する処理を実装
+        // ここでは仮のデータを返す
+        ContractInfoResponse response = new ContractInfoResponse();
+        ContractInfoResponseAAE91 aae91 = new ContractInfoResponseAAE91();
+        aae91.setAAE91056("実装　さま");
+        response.setAAE91(aae91);
+
+        return response;
+    }    
 
     // リソースを作成（POST）
     public boolean createResource(String resourceName, Map<String, Object> requestData) {

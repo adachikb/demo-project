@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "springdoc.api-docs.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable OpenAPI API docs"
+    },
+    {
+      "name": "springdoc.swagger-ui.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable Swagger UI"
+    }
+  ]
+}
